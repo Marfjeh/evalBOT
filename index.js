@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 let client = new Discord.Client();
+let config = require('./config.json');
 
-client.login(require('./token'));
+client.login(config.token);
 
 client.on('ready', event => {
 	console.log('ready');
@@ -18,7 +19,7 @@ function censor(censor) {
 }
 
 client.on('message', message => {
-	if(message.author.id === "186133252195483649" && /^\]eval .+/.test(message.content)) {
+	if(message.author.id === config.owner && /^\]eval .+/.test(message.content)) {
 		message.channel.send({
 			embed: {
 				author: {
@@ -32,6 +33,8 @@ client.on('message', message => {
 			}
 		}).then(reply => {
 			try {
+				let guild = message.guild;
+				let user = message.author;
 				let result = eval(message.content.substring(6));
 				if(reply.editable) {
 					reply.edit({
@@ -104,9 +107,9 @@ client.on('message', message => {
 				color: 0xeb66ff
 			}
 		})
-	} else if(message.author.id === "186133252195483649" && /.*<@385080141941964810>.*/.test(message.content)) {
+	} else if(message.author.id === config.owner && /.*<@385080141941964810>.*/.test(message.content)) {
 		message.channel.send("Stop tagging me!");
-	} else if (message.author.id === "186133252195483649" && message.content === "]leave") {
+	} else if (message.author.id === config.owner && message.content === "]leave") {
 		message.channel.send({
 			embed: {
 				author: {
