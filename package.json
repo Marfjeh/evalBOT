@@ -1,0 +1,25 @@
+{
+  "name": "evalBOT",
+  "version": "1.0.0",
+  "description": "This is a simple Eval bot made for Discord.js",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megaxlr/evalBOT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megaxlr/evalBOT/issues"
+  },
+  "homepage": "https://github.com/megaxlr/evalBOT#readme"
+}
