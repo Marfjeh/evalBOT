@@ -172,14 +172,14 @@ client.on('message', message => {
 					url: "https://megaxlr.net"
 				},
 				title: `Add **${client.user.username}** to your own server`,
-				url: "https://discordapp.com/oauth2/authorize?client_id=385080141941964810&scope=bot",
+				url: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot`,
 				description: `Click the link to add **${client.user.username}** to your server`,
 				color: 0xeb66ff
 			}
 		})
-	} else if (message.author.id === config.owner && /.*<@385080141941964810>.*/.test(message.content)) {
+	} else if (message.author.id === config.owner && message.content.includes(`<@${client.user.id}>`))	
 		message.channel.send("Stop tagging me!");
-	} else if (message.author.id === config.owner && message.content === "]leave") {
+	else if (message.author.id === config.owner && message.content === `]leave`) {
 		message.channel.send({
 			embed: {
 				author: {
@@ -188,7 +188,7 @@ client.on('message', message => {
 					url: "https://megaxlr.net"
 				},
 				title: `Goodbye :blue_heart: (click to re-add)`,
-				url: "https://discordapp.com/oauth2/authorize?client_id=385080141941964810&scope=bot",
+				url: `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot`,
 				description: `Thank you for using ${client.user.username}`,
 				footer: {
 					text: `Leaving server`,
@@ -196,7 +196,7 @@ client.on('message', message => {
 				color: 0x5dadec,
 			}
 		});
-		if (message.guild.id != "246702404689461250") message.guild.leave();
+		if (message.guild.id != config.guild) message.guild.leave();
 	}
 });
 
