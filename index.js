@@ -91,7 +91,6 @@ class Result {
 }
 
 async function addReactions(res) {
-	console.log(inspect(res.getOutput(), {depth: 3}).length > messageMaxLength);
 	if(inspect(res.getOutput(), {depth: 3}).length > messageMaxLength) {	
 		res.getMessage().react('◀').then(() => {
 			res.getMessage().react('⏹').then(() => {
@@ -221,5 +220,3 @@ client.on('messageReactionAdd', function (mr, user) {
 		mr.remove(user);
 	}
 });
-
-client.on('debug', console.log);
