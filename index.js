@@ -70,7 +70,7 @@ class Result {
 				fields: [
 					{
 						name: "Input",
-						value: `\`${this.input.substring(6)}\``,
+						value: `\`${this.input.substring(config.prefix.length + 5)}\``,
 						inline: true,
 					}
 				],
@@ -137,7 +137,7 @@ function errorembed(obj, input) {
 }
 
 client.on('message', message => {
-	if (message.author.id === config.owner && /^\]eval .+/.test(message.content)) {
+	if (message.author.id === config.owner && message.content.startsWith(`${config.prefix}eval `)) {
 		let working = new Result(message.content, "Please wait...", message, "Eval working");
 		working.setColor(0xEB66FF);
 		message.channel.send(working.toJsonEmbed())
@@ -147,7 +147,7 @@ client.on('message', message => {
 						u = message.author,
 						c = message.channel,
 						m = message;
-					let result = new Result(message.content, eval(message.content.substring(6)), reply, "Eval Result");
+					let result = new Result(message.content, eval(message.content.substring(config.prefix.length+5)), reply, "Eval Result");
 					if (reply.editable) {
 						reply.edit(result.toJsonEmbed()).then(() => {
 							addReactions(result);

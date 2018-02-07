@@ -1,6 +1,13 @@
 # Discord eval BOT
 
-This is a simple Eval bot made for Discord.js
+This is an Eval bot made for Discord.js
+## Features
+ - Pagination
+ - ID-Locking security
+ - Removing old results
+ - Nice formatting
+ - Configurable message lengths
+ - Dockerized
 
 ## Installation
 ```
@@ -11,3 +18,4 @@ add your username and
 ```
 node index.js
 ```
+

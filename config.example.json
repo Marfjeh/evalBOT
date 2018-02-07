@@ -1,4 +1,6 @@
 {
 	"token": "your bottoken",
-	"owner": "your owner id"
+	"owner": "your owner id",
+	"guild": "Guild-ID to never leave",
+	"prefix": "]"
 }
